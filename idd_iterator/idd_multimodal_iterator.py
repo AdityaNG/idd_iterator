@@ -55,7 +55,7 @@ class IDDMultimodalIterator:
 
     def __getitem__(self, index):
         row = self.df.iloc[index]
-        timestamp_str,image_idx,latitude,longitude,altitude = row
+        timestamp_str, image_idx, latitude, longitude, altitude = row
         hrs, mins, secs, mss = list(map(float, timestamp_str.split("-")))
         timestamp = hrs*3600.0 + mins*60.0 + secs + mss/1000.0
 
@@ -74,12 +74,12 @@ class IDDMultimodalIterator:
         else:
             obd_dat = None
 
-        return timestamp, left_img, right_img, lidar, obd_dat
+        return timestamp, left_img, right_img, latitude, longitude, altitude, lidar, obd_dat
 
 def main():
     idd = IDDMultimodalIterator(enable_obd=True)
     for row in idd:
-        timestamp, left_img, right_img, lidar, obd_dat = row
+        timestamp, left_img, right_img, latitude, longitude, altitude, lidar, obd_dat = row
         full_frame = cv2.hconcat([left_img, right_img])
         full_frame = cv2.resize(full_frame, (0,0), fx=0.25, fy=0.25)
         cv2.imshow('full_frame', full_frame)
