@@ -11,7 +11,12 @@ multimodal_iter = idd_multimodal_iterator.IDDMultimodalIterator()
 
 ## Install
 
+```bash
+pip install idd_iterator
 ```
+
+To install the latest (might be unstable):
+```bash
 pip install git+https://github.com/AdityaNG/idd_iterator
 ```
 
