@@ -5,7 +5,7 @@ from setuptools import find_packages
 def load(path):
     return open(path, 'r').read()
 
-idd_iterator_version = '1.0.0'
+idd_iterator_version = '1.0.1'
 
 classifiers = [
     "Development Status :: 5 - Production/Stable",
