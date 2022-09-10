@@ -4,9 +4,26 @@
 ![pypi workflow](https://github.com/AdityaNG/idd_iterator/actions/workflows/pypi.yml/badge.svg)
 ![pytest workflow](https://github.com/AdityaNG/idd_iterator/actions/workflows/pytest.yml/badge.svg)
 
+Example usage:
+
 ```python
 from idd_iterator import idd_multimodal_iterator
-multimodal_iter = idd_multimodal_iterator.IDDMultimodalIterator()
+
+# Load in the mini dataset
+multimodal_iter = idd_multimodal_iterator.IDDMultimodalIterator(
+    index="d0",
+    idd_multimodal_path="idd_multimodal_mini/",
+    enable_lidar=True,
+    enable_obd=True
+)
+
+# Iterate
+for row in idd:
+    timestamp, left_img, right_img, latitude, longitude, altitude, lidar, obd_dat = row
+    do_something()
+
+# Indexing
+timestamp, left_img, right_img, latitude, longitude, altitude, lidar, obd_dat = idd[3]
 ```
 
 ## Install
@@ -21,6 +38,8 @@ pip install git+https://github.com/AdityaNG/idd_iterator
 ```
 
 ## Dataset Structre
+
+Download the full dataset at <a href="https://idd.insaan.iiit.ac.in/">idd.insaan.iiit.ac.in</a>
 
 ```bash
 idd_multimodal_mini/
